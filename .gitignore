@@ -9,3 +9,8 @@ target/
 *.tmb
 module-overrides.yml
 onlinestats.yml
+dependency-reduced-pom.xml
+.classpath
+.project
+.factorypath
+.settings/
