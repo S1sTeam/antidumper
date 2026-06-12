@@ -1,0 +1,5 @@
+name: AntiDumperBridge
+version: 3.0
+main: com.s1steam.antidumper.bridge.proxy.BungeeBridgePlugin
+author: S1sTeam
+description: AntiDumper proxy bridge (BungeeCord)

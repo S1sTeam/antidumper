@@ -1,0 +1,264 @@
+# English localization for AntiDumper v2.0
+#
+# Color codes support (поддержка цветов):
+#   Legacy: &0-9 &a-f &k-o &r
+#   RGB hex: &#RRGGBB (e.g. &#FF6600 for orange)
+#   Example: "&#FF5555Red text&#AA5555 and gold &6text"
+#   Unicode: \u00a7 or direct symbols like ★
+
+commands:
+  no-permission: "§cYou don't have permission to use this command."
+  blocked: "§cThis command has been blocked by the server administration."
+  reload: "§aConfiguration reloaded!"
+  usage: "§7/antidumper reload §8- §7reload configuration"
+  check:
+    usage: "§7/antidumper check <player> §8- §7check player for mods"
+    checking: "§eChecking player %player%..."
+    no-player: "§cPlayer not found or not online."
+    result-header: "§6Check result for %player%:"
+    suspicious: "§c- Channel: %channel% §8[§cSUSPICIOUS§8]"
+    safe: "§a- Channel: %channel%"
+    total-channels: "§7Total channels: §f%count%"
+    clean: "§aNo suspicious modifications detected."
+    detected: "§cFound §f%count% §csuspicious modifications!"
+  punish:
+    info: "§6Punishment info for %player%:"
+    reset: "§aViolation counter for %player% reset."
+  whitelist:
+    added: "§aCommand /%command% added to whitelist."
+    removed: "§aCommand /%command% removed from whitelist."
+    already-in: "§cCommand /%command% is already in the whitelist."
+    not-in: "§cCommand /%command% is not in the whitelist."
+
+protection:
+  wdl:
+    kick: "§cForbidden mod detected!\n§7Please disable it to play on this server."
+    warn: "§cForbidden mod detected! Please disable it."
+  plugin-stealer:
+    kick: "§cPlugin stealing attempt detected!\n§7Your action has been logged."
+    warn: "§cPlugin stealing attempt! Your action has been logged."
+  command-dump:
+    blocked: "§cThis command has been blocked by the server administration."
+    ping-blocked: "§c/ping command is blocked on this server."
+    help-filtered: "§7Command list has been hidden by administration."
+  command-whitelist:
+    blocked: "§cThis command is not allowed on this server."
+  file-steal:
+    kick: "§cUnauthorized file access attempt detected."
+    warn: "§cFile access attempt has been logged."
+  db-steal:
+    kick: "§cDatabase access attempt detected."
+    warn: "§cDatabase access attempt has been logged."
+  crash:
+    kick: "§cYour client is sending invalid packets.\n§7Check your version and modifications."
+    warn: "§cYour client is sending suspicious packets!"
+  hacked-client:
+    kick: "§cHacked client detected!\n§7Modified clients are not allowed on this server."
+    warn: "§cHacked client detected! Please disable it."
+  exploit:
+    kick: "§cExploit detected! (§f%module%§c)\n§7Your action has been blocked."
+    warn: "§cSuspicious activity detected! (§f%module%§c)"
+  captcha:
+    prompt: "§6Type the number §e%number% §6in chat to verify"
+    success: "§a✓ CAPTCHA passed! Welcome."
+    kick: "§cYou failed the captcha! Rejoin and type the number."
+  behaviour:
+    kick: "§cSuspicious behaviour detected! Please rejoin."
+  siege:
+    kick: "§cSiege mode active: server temporarily limits connections."
+
+punish:
+  warn-message: "§eWarning! Your action has been logged (§f%module%§e). Repeated violations will lead to a kick."
+  kick-reason: "§cYou were kicked for repeated violations (§f%module%§c)."
+  tempban-reason: "§cYou have been temporarily banned for repeated violations (§f%module%§c)."
+
+gui:
+  title: "&#555555⛨ &#FF4444AntiDumper &#777777» &#AAAAAAPanel"
+  on: "§a§l● ON"
+  off: "§c§l○ OFF"
+  click: "§8Click to toggle"
+  lang-ru: "§fРусский"
+  lang-en: "§fEnglish"
+  lang-on: "§a✓ Active"
+  lang-off: "§8Click to select"
+  lang-changed-ru: "§8[§cAntiDumper§8] §aLanguage changed to Russian"
+  lang-changed-en: "§8[§cAntiDumper§8] §aLanguage changed to English"
+  modules:
+    wdl:
+      name: "§6AntiWorldDownloader"
+      lore:
+        - "§7World download mod protection"
+        - "§7WDL, Litematica, Xaero, JourneyMap"
+    stealer:
+      name: "§6AntiPluginStealer"
+      lore:
+        - "§7Plugin theft protection"
+        - "§7PluginGrabber, Stealer"
+    cmdump:
+      name: "§6AntiCommandDump"
+      lore:
+        - "§7Dump command blocker"
+        - "§7/plugins, /dump, /ping, /version"
+    filesteal:
+      name: "§6AntiFileSteal"
+      lore:
+        - "§7File and DB protection"
+        - "§7Configs, JAR, SQLite, .yml"
+    crash:
+      name: "§6AntiCrash"
+      lore:
+        - "§7Crash bot protection"
+        - "§7Packets, //calc, //eval"
+    connlimit:
+      name: "§6ConnectionLimiter"
+      lore:
+        - "§7Connection limit per IP"
+        - "§7Max: %limit% conn/IP"
+    cmdwhitelist:
+      name: "§6CommandWhitelist"
+      lore:
+        - "§7Command whitelist"
+        - "§7Mode: %mode%"
+    hackedclient:
+      name: "§6AntiHackedClient"
+      lore:
+        - "§7Hacked client protection"
+        - "§7LPX, Wurst, Future, Forge/FML"
+    packetlimiter:
+      name: "§6PacketLimiter"
+      lore:
+        - "§7Packet rate limiter"
+        - "§7Anti PacketSpam / FastMath"
+    bookban:
+      name: "§6AntiBookBan"
+      lore:
+        - "§7Book crash protection"
+        - "§7NBT books / page limit"
+    chunkban:
+      name: "§6AntiChunkBan"
+      lore:
+        - "§7Chunk crash protection"
+        - "§7Coordinate exploit"
+    lagmachine:
+      name: "§6AntiLagMachine"
+      lore:
+        - "§7Lag machine protection"
+        - "§7Entities / ender dragon / water"
+    phase:
+      name: "§6AntiPhase"
+      lore:
+        - "§7Phase protection"
+        - "§7Wall clipping / NoClip"
+    blink:
+      name: "§6AntiBlink"
+      lore:
+        - "§7Blink protection"
+        - "§7Packet desync"
+    timer:
+      name: "§6AntiTimer"
+      lore:
+        - "§7Timer protection"
+        - "§7Game speed hack"
+    nofall:
+      name: "§6AntiNoFall"
+      lore:
+        - "§7NoFall protection"
+        - "§7Fall damage cancel"
+    boatfly:
+      name: "§6AntiBoatFly"
+      lore:
+        - "§7BoatFly protection"
+        - "§7Flying in boats"
+    elytrafly:
+      name: "§6AntiElytraFly"
+      lore:
+        - "§7ElytraFly protection"
+        - "§7Abnormal elytra speed"
+    autopearl:
+      name: "§6AntiAutoPearl"
+      lore:
+        - "§7AutoPearl protection"
+        - "§7Automatic pearl throwing"
+    inventorymove:
+      name: "§6AntiInventoryMove"
+      lore:
+        - "§7InventoryMove protection"
+        - "§7Moving with open inventory"
+    disabler:
+      name: "§6AntiDisabler"
+      lore:
+        - "§7Disabler protection"
+        - "§7Anticheat disable attempts"
+    tower:
+      name: "§6AntiTower"
+      lore:
+        - "§7Tower protection"
+        - "§7Instant block elevation"
+    scaffold:
+      name: "§6AntiScaffold"
+      lore:
+        - "§7Scaffold protection"
+        - "§7Abnormal block placement"
+    nbt:
+      name: "§6AntiNBT"
+      lore:
+        - "§7NBT exploit protection"
+        - "§7Crash items with NBT"
+    commandexploit:
+      name: "§6AntiCommandExploit"
+      lore:
+        - "§7Command exploit blocker"
+        - "§7/execute /fill /data"
+    captcha:
+      name: "§6BotCAPTCHA"
+      lore:
+        - "§7Captcha on join"
+        - "§7Bot protection"
+    behaviour:
+      name: "§6BehaviourCheck"
+      lore:
+        - "§7Player behaviour analysis"
+        - "§7Action speed check"
+    siege:
+      name: "§6SiegeMode"
+      lore:
+        - "§7Siege mode on attack"
+        - "§7Threshold: %threshold% conn/min"
+    uuidwhitelist:
+      name: "§6UUIDWhitelist"
+      lore:
+        - "§7UUID whitelist"
+        - "§7Only allowed players"
+  geoip:
+    name: "§6GeoIP"
+    lore:
+      - "§7Player geolocation"
+  info:
+    name: "&#FFAA00Information"
+    lore:
+      - "§7Status: §aRunning"
+      - "§7Language: §f%lang%"
+      - "§7Author: &#55CCFFS1sTeam"
+      - "§7Violations: §f%violations%"
+  stats:
+    name: "§eStatistics"
+    lore:
+      - "§7Total violations: §f%violations%"
+      - "§7Active modules: §f%modules%"
+      - "§7Version: §f%version%"
+      - "§8Click to view"
+  check:
+    name: "§ePlayer Check"
+    lore:
+      - "§7/ad check <nick>"
+      - "§8Click to enter nick"
+  check-hint: "§8[§cAntiDumper§8] §7Use: §c/ad check <nick>"
+  reload:
+    name: "§6Reload"
+    lore:
+      - "§7Reload configuration"
+      - "§8Click to apply changes"
+  close:
+    name: "§cClose"
+  prev: "§e← Back"
+  next: "§eNext →"

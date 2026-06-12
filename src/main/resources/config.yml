@@ -1,0 +1,442 @@
+# ╔═══════════════════════════════════════════════════════════╗
+# ║              ✦ AntiDumper v3.0 by S1sTeam ✦              ║
+# ║        ⚔ Full server protection / Полная защита          ║
+# ║    🛡 Shield against dumpers & grabbers / Щит от дамперов ║
+# ╚═══════════════════════════════════════════════════════════╝
+
+# ┌─────────────────────────────────────────────────────────┐
+# │  LANGUAGE / ЯЗЫК                                        │
+# │  Create lang/<code>.yml in lang/ folder and set value   │
+# │  Создайте lang/<code>.yml в папке lang/                 │
+# ├─────────────────────────────────────────────────────────┤
+# │  Options: en, ru (or custom)                            │
+# └─────────────────────────────────────────────────────────┘
+lang: en
+
+# ┌─────────────────────────────────────────────────────────┐
+# │  DEBUG MODE / РЕЖИМ ОТЛАДКИ                             │
+# │  true  → violations are logged, NOT punished            │
+# │  false → normal protection (kicks/bans)                 │
+# └─────────────────────────────────────────────────────────┘
+debug: false
+
+settings:
+  # Plugin message prefix / Префикс
+  prefix: "§8[§cAntiDumper§8]"
+
+  # Server name (for cross-server identification)
+  server-name: server1
+
+  # ┌─────────────────────────────────────────────────────────┐
+  # │  WEBHOOK (Discord/Slack)                               │
+  # └─────────────────────────────────────────────────────────┘
+  webhook:
+    enabled: false
+    url: ""
+
+# ╔═══════════════════════════════════════════════════════════╗
+# ║              DATABASE / БАЗА ДАННЫХ                      ║
+# ╚═══════════════════════════════════════════════════════════╝
+# ┌─────────────────────────────────────────────────────────┐
+# │  Choose your database type:                             │
+# │                                                         │
+# │  h2      → Embedded Java DB (pure Java, ~2MB)           │
+# │            Рекомендуется для небольших серверов         │
+# │            Файл: data.mv.db                             │
+# │                                                         │
+# │  sqlite  → Embedded native DB (надёжный, ~14MB в jar)   │
+# │            Популярен в Minecraft сообществе             │
+# │            Файл: data.db                                │
+# │                                                         │
+# │  mysql   → External MySQL/MariaDB сервер                │
+# │            Для крупных сетей / больших проектов         │
+# └─────────────────────────────────────────────────────────┘
+database:
+  type: h2
+  # MySQL settings (only used when type: mysql)
+  host: localhost
+  port: 3306
+  database: antidumper
+  user: root
+  password: ""
+
+# ╔═══════════════════════════════════════════════════════════╗
+# ║              REDIS (CROSS-SERVER SYNC)                   ║
+# ╚═══════════════════════════════════════════════════════════╝
+# Synchronizes violations, punishments, and siege mode
+# across your entire server network in real-time.
+# ┌─────────────────────────────────────────────────────────┐
+# │  enabled: true → requires Redis server running          │
+# │  enabled: false → cross-server sync disabled            │
+# └─────────────────────────────────────────────────────────┘
+redis:
+  enabled: false
+  host: localhost
+  port: 6379
+  password: ""
+  timeout: 5000
+
+# ============================================================
+#              PROTECTION MODULES / МОДУЛИ ЗАЩИТЫ
+# ============================================================
+
+protection:
+
+  # ========== 🗺️ ANTI WORLD DOWNLOADER ==========
+  # Blocks WorldDownloader, Litematica, Baritone, Xaero, JourneyMap...
+  # Блокирует моды для скачки миров
+  anti-world-downloader:
+    enabled: true
+    # Action on detection / Действие: KICK / WARN / LOG
+    action: KICK
+    # Blocked mod channels / Заблокированные каналы модов
+    blocked-channels:
+      - "WDL|CONTROL"
+      - "WDL|INIT"
+      - "wdl:control"
+      - "wdl:init"
+      - "worlddownloader:control"
+      - "worlddownloader:init"
+      - "litematica:hello"
+      - "litematica:world"
+      - "litematica:schematic"
+      - "litematica:task"
+      - "minihud:hello"
+      - "tweakeroo:hello"
+      - "schematica:hello"
+      - "schematica:world"
+      - "malilib:hello"
+      - "malilib:config"
+      - "journeymap:hello"
+      - "journeymap:data"
+      - "journeymap:waypoint"
+      - "voxelmap:hello"
+      - "voxelmap:data"
+      - "xaerominimap:hello"
+      - "xaerominimap:data"
+      - "xaeroworldmap:hello"
+      - "xaeroworldmap:data"
+      - "xaeroworldmap:world"
+      - "baritone:hello"
+      - "worldedit:cui"
+
+  # ========== 📦 ANTI PLUGIN STEALER ==========
+  # Blocks PluginGrabber, Stealer / Блокирует воровство плагинов
+  anti-plugin-stealer:
+    enabled: true
+    action: KICK
+    detection:
+      # Scan PluginMessage channels / Сканировать каналы
+      channel-scan: true
+      # Scan commands / Сканировать команды
+      command-scan: true
+
+  # ========== 🚫 ANTI COMMAND DUMP ==========
+  # Blocks dump commands / Блокирует дамп-команды
+  anti-command-dump:
+    enabled: true
+    commands:
+      plugins: true
+      version: true
+      dump: true
+      about: true
+      icanhasbukkit: true
+      timings: true
+      plugman: true
+      essentials: true
+      ping: true
+      custom: []
+    # Hide blocked from tab complete / Скрыть из таб-комплита
+    tab-complete:
+      hide-blocked-commands: true
+    # Hide plugins from server ping / Скрыть плагины из пинга
+    server-ping:
+      hide-plugins: true
+    # Filter /help output / Фильтровать /help
+    help-filter:
+      enabled: true
+
+  # ========== 📁 ANTI FILE STEAL ==========
+  # Protects configs, DBs, JARs / Защита конфигов, БД, JAR
+  anti-file-steal:
+    enabled: true
+    action: KICK
+    features:
+      path-traversal: true
+      exploit-channels: true
+    # Protected extensions / Защищаемые расширения
+    protected-extensions:
+      - ".db"
+      - ".sqlite"
+      - ".mv.db"
+      - ".yml"
+      - ".yaml"
+      - ".json"
+      - ".properties"
+      - ".jar"
+      - ".zip"
+      - ".dat"
+      - ".mcfunction"
+      - ".snbt"
+      - ".nbt"
+      - ".txt"
+      - ".log"
+      - ".cfg"
+      - ".conf"
+      - ".xml"
+      - ".html"
+
+  # ========== 👾 ANTI HACKED CLIENT ==========
+  # Detects LPX, Wurst, Future, Impact, Meteor, Forge/FML...
+  # Детектит хакнутые клиенты
+  anti-hacked-client:
+    enabled: true
+    action: KICK
+
+  # ========== 💥 ANTI CRASH ==========
+  # Limits packets, blocks crash exploits / Лимит пакетов, краш-эксплойты
+  anti-crash:
+    enabled: true
+    max-packet-size: 5000
+    max-plugin-message-size: 500
+    block-crash-commands: true
+    block-crash-payloads: true
+
+  # ========== 🔗 CONNECTION LIMITER ==========
+  # Connection flooding protection / Защита от флуда подключениями
+  connection-limiter:
+    enabled: true
+    max-connections-per-ip: 3
+    period-seconds: 60
+
+  # ============================================================
+  #         🧊 PHANTOM — EXPLOIT PROTECTION / ЭКСПЛОЙТ ЗАЩИТА
+  # ============================================================
+
+  # ========== 📦 PACKET LIMITER ==========
+  packet-limiter:
+    enabled: true
+    max-packets-per-second: 500
+    action: KICK
+
+  # ========== 📖 ANTI-BOOK-BAN ==========
+  anti-book-ban:
+    enabled: true
+    max-book-pages: 50
+    max-page-length: 200
+    action: KICK
+
+  # ========== 🗺️ ANTI-CHUNK-BAN ==========
+  anti-chunk-ban:
+    enabled: true
+    max-chunks-per-second: 25
+    action: KICK
+
+  # ========== 🐄 ANTI-LAG-MACHINE ==========
+  anti-lag-machine:
+    enabled: true
+    max-entities-per-chunk: 40
+    action: KICK
+
+  # ========== 🧊 ANTI-PHASE ==========
+  anti-phase:
+    enabled: true
+    action: KICK
+
+  # ========== 👻 ANTI-BLINK ==========
+  anti-blink:
+    enabled: true
+    max-blink-time-ms: 1000
+    action: KICK
+
+  # ========== ⏱️ ANTI-TIMER ==========
+  anti-timer:
+    enabled: true
+    max-packets-per-second: 22
+    action: KICK
+
+  # ========== 🍃 ANTI-NO-FALL ==========
+  anti-no-fall:
+    enabled: true
+    action: KICK
+
+  # ========== 🚤 ANTI-BOAT-FLY ==========
+  anti-boat-fly:
+    enabled: true
+    max-boat-speed: 0.6
+    action: KICK
+
+  # ========== 🦅 ANTI-ELYTRA-FLY ==========
+  anti-elytra-fly:
+    enabled: true
+    max-elytra-speed: 2.0
+    action: KICK
+
+  # ========== 🟢 ANTI-AUTO-PEARL ==========
+  anti-auto-pearl:
+    enabled: true
+    max-pearls-per-second: 1
+    action: KICK
+
+  # ========== 🎒 ANTI-INVENTORY-MOVE ==========
+  anti-inventory-move:
+    enabled: true
+    action: KICK
+
+  # ========== 🔧 ANTI-DISABLER ==========
+  anti-disabler:
+    enabled: true
+    action: KICK
+
+  # ========== 🏗️ ANTI-TOWER ==========
+  anti-tower:
+    enabled: true
+    max-tower-height: 5
+    action: KICK
+
+  # ========== 🧱 ANTI-SCAFFOLD ==========
+  anti-scaffold:
+    enabled: true
+    max-blocks-per-second: 8
+    action: KICK
+
+  # ========== 💾 ANTI-NBT ==========
+  anti-nbt:
+    enabled: true
+    max-nbt-size: 5000
+    action: KICK
+
+  # ========== ⌨️ ANTI-COMMAND-EXPLOIT ==========
+  anti-command-exploit:
+    enabled: true
+    action: KICK
+
+  # ========== 📊 PACKET INSPECTOR ==========
+  # Deep packet analysis via Netty injection
+  # Глубокий анализ пакетов через Netty
+  packet-inspector:
+    enabled: true
+    action: KICK
+
+  # ============================================================
+  #        🤖 BOT PROTECTION / ЗАЩИТА ОТ БОТОВ (CrowdControl)
+  # ============================================================
+
+  # ========== 🔐 CAPTCHA ==========
+  captcha:
+    enabled: true
+    timeout-seconds: 30
+    kick-after-timeout: true
+    action: KICK
+
+  # ========== 🧠 BEHAVIOUR CHECK ==========
+  behaviour-check:
+    enabled: true
+    action: KICK
+
+  # ========== 🚨 SIEGE MODE ==========
+  siege-mode:
+    enabled: true
+    auto-enable-threshold: 10
+    action: KICK
+
+  # ========== 📜 UUID WHITELIST ==========
+  uuid-whitelist:
+    enabled: false
+
+# ============================================================
+#   ⚖️ AUTO PUNISHMENT SYSTEM / СИСТЕМА АВТОМАТИЧЕСКИХ НАКАЗАНИЙ
+# ============================================================
+
+auto-punish:
+  enabled: true
+  thresholds:
+    warn: 1
+    kick: 3
+    tempban: 5
+  tempban-duration-hours: 24
+  reset-after-days: 30
+  exempt-permission: "antidumper.punish.exempt"
+
+# ============================================================
+#   📋 COMMAND WHITELIST / БЕЛЫЙ СПИСОК КОМАНД
+# ============================================================
+
+command-whitelist:
+  enabled: false
+  mode: STRICT
+  allowed-commands:
+    - "msg"
+    - "tell"
+    - "r"
+    - "reply"
+    - "me"
+    - "help"
+    - "list"
+    - "spawn"
+    - "tpa"
+    - "tpahere"
+    - "accept"
+    - "deny"
+    - "warp"
+    - "home"
+    - "sethome"
+    - "kit"
+    - "bal"
+    - "pay"
+    - "shop"
+    - "ec"
+    - "enderchest"
+    - "trash"
+    - "ignore"
+    - "rules"
+    - "discord"
+    - "site"
+  bypass-permission: "antidumper.commandwhitelist.bypass"
+
+# ============================================================
+#   🔔 STAFF ALERTS / АЛЕРТЫ ПЕРСОНАЛУ
+# ============================================================
+
+staff-alerts:
+  enabled: true
+  alert-permission: "antidumper.alert"
+  events:
+    command-dump: true
+    world-downloader: true
+    plugin-stealer: true
+    file-steal: true
+    crash: true
+  format: "§8[§cAntiDumper§8] §e⚡ §f%player% §7→ %action%"
+  sound:
+    # Alert sound for staff / Звук алерта для персонала
+    enabled: true
+    # Sound name (1.8: NOTE_PLING, 1.13+: BLOCK_NOTE_BLOCK_PLING)
+    sound: "BLOCK_NOTE_BLOCK_PLING"
+    volume: 0.5
+    pitch: 1.0
+
+# ============================================================
+#   📊 ONLINE STATISTICS / СТАТИСТИКА ОНЛАЙНА
+# ============================================================
+
+online-stats:
+  enabled: true
+  track-interval-minutes: 5
+  store-days: 30
+
+# ============================================================
+#   🌍 GEO LOCATION / ГЕОЛОКАЦИЯ (GEO IP)
+# ============================================================
+
+geo-ip:
+  enabled: true
+  log-on-join: true
+  cache-size: 1000
+
+# ============================================================
+#   🖥️ GUI CONTROL PANEL / ПАНЕЛЬ УПРАВЛЕНИЯ
+# ============================================================
+
+gui:
+  enabled: true

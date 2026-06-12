@@ -1,0 +1,114 @@
+name: AntiDumper
+version: 3.0
+main: com.s1steam.antidumper.AntiDumperPlugin
+author: S1sTeam
+api-version: '1.21'
+softdepend: [ProtocolLib]
+load: STARTUP
+
+commands:
+  antidumper:
+    description: Управление AntiDumper
+    usage: /antidumper [reload]
+    aliases: [ad]
+
+permissions:
+  antidumper.bypass:
+    description: Bypass ALL protection checks
+    default: op
+  antidumper.bypass.packet-limiter:
+    description: Bypass PacketLimiter
+    default: op
+  antidumper.bypass.anti-book-ban:
+    description: Bypass AntiBookBan
+    default: op
+  antidumper.bypass.anti-chunk-ban:
+    description: Bypass AntiChunkBan
+    default: op
+  antidumper.bypass.anti-lag-machine:
+    description: Bypass AntiLagMachine
+    default: op
+  antidumper.bypass.anti-phase:
+    description: Bypass AntiPhase
+    default: op
+  antidumper.bypass.anti-blink:
+    description: Bypass AntiBlink
+    default: op
+  antidumper.bypass.anti-timer:
+    description: Bypass AntiTimer
+    default: op
+  antidumper.bypass.anti-no-fall:
+    description: Bypass AntiNoFall
+    default: op
+  antidumper.bypass.anti-boat-fly:
+    description: Bypass AntiBoatFly
+    default: op
+  antidumper.bypass.anti-elytra-fly:
+    description: Bypass AntiElytraFly
+    default: op
+  antidumper.bypass.anti-auto-pearl:
+    description: Bypass AntiAutoPearl
+    default: op
+  antidumper.bypass.anti-inventory-move:
+    description: Bypass AntiInventoryMove
+    default: op
+  antidumper.bypass.anti-disabler:
+    description: Bypass AntiDisabler
+    default: op
+  antidumper.bypass.anti-tower:
+    description: Bypass AntiTower
+    default: op
+  antidumper.bypass.anti-scaffold:
+    description: Bypass AntiScaffold
+    default: op
+  antidumper.bypass.anti-nbt:
+    description: Bypass AntiNBT
+    default: op
+  antidumper.bypass.anti-command-exploit:
+    description: Bypass AntiCommandExploit
+    default: op
+  antidumper.bypass.anti-world-downloader:
+    description: Bypass AntiWorldDownloader
+    default: op
+  antidumper.bypass.anti-plugin-stealer:
+    description: Bypass AntiPluginStealer
+    default: op
+  antidumper.bypass.anti-command-dump:
+    description: Bypass AntiCommandDump
+    default: op
+  antidumper.bypass.anti-file-steal:
+    description: Bypass AntiFileSteal
+    default: op
+  antidumper.bypass.anti-crash:
+    description: Bypass AntiCrash
+    default: op
+  antidumper.bypass.connection-limiter:
+    description: Bypass ConnectionLimiter
+    default: op
+  antidumper.bypass.anti-hacked-client:
+    description: Bypass AntiHackedClient
+    default: op
+  antidumper.bypass.captcha:
+    description: Bypass CAPTCHA
+    default: op
+  antidumper.bypass.behaviour-check:
+    description: Bypass BehaviourCheck
+    default: op
+  antidumper.bypass.siege-mode:
+    description: Bypass SiegeMode
+    default: op
+  antidumper.bypass.uuid-whitelist:
+    description: Bypass UUIDWhitelist
+    default: op
+  antidumper.admin:
+    description: Plugin administration
+    default: op
+  antidumper.alert:
+    description: Receive staff alerts
+    default: op
+  antidumper.punish.exempt:
+    description: Immune to auto-punishment
+    default: op
+  antidumper.commandwhitelist.bypass:
+    description: Bypass command whitelist
+    default: op

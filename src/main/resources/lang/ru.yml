@@ -1,0 +1,264 @@
+# Русская локализация AntiDumper v2.0
+#
+# Поддержка цветов (Color codes support):
+#   Legacy: &0-9 &a-f &k-o &r
+#   RGB hex: &#RRGGBB (например &#FF6600 для оранжевого)
+#   Пример: "&#FF5555Красный текст&#AA5555 и золотой &6текст"
+#   Юникод: \u00a7 или прямые символы ★
+
+commands:
+  no-permission: "§cУ вас нет прав на выполнение этой команды."
+  blocked: "§cЭта команда заблокирована администрацией сервера."
+  reload: "§aКонфигурация перезагружена!"
+  usage: "§7/antidumper reload §8- §7перезагрузить конфигурацию"
+  check:
+    usage: "§7/antidumper check <игрок> §8- §7проверить игрока на моды"
+    checking: "§eПроверка игрока %player%..."
+    no-player: "§cИгрок не найден или не в сети."
+    result-header: "§6Результат проверки %player%:"
+    suspicious: "§c- Канал: %channel% §8[§cПОДОЗРИТЕЛЬНЫЙ§8]"
+    safe: "§a- Канал: %channel%"
+    total-channels: "§7Всего каналов: §f%count%"
+    clean: "§aМодификаций не обнаружено."
+    detected: "§cОбнаружено §f%count% §cподозрительных модификаций!"
+  punish:
+    info: "§6Информация о наказаниях %player%:"
+    reset: "§aСчётчик нарушений %player% сброшен."
+  whitelist:
+    added: "§aКоманда /%command% добавлена в белый список."
+    removed: "§aКоманда /%command% удалена из белого списка."
+    already-in: "§cКоманда /%command% уже в белом списке."
+    not-in: "§cКоманды /%command% нет в белом списке."
+
+protection:
+  wdl:
+    kick: "§cОбнаружен запрещенный мод для скачки миров!\n§7Он запрещен на этом сервере."
+    warn: "§cОбнаружен запрещенный мод! Пожалуйста, отключите его."
+  plugin-stealer:
+    kick: "§cОбнаружена попытка кражи плагинов!\n§7Ваше действие зафиксировано."
+    warn: "§cПопытка кражи плагинов! Ваше действие зафиксировано."
+  command-dump:
+    blocked: "§cЭта команда заблокирована администрацией сервера."
+    ping-blocked: "§cКоманда /ping заблокирована на этом сервере."
+    help-filtered: "§7Список команд скрыт администрацией."
+  command-whitelist:
+    blocked: "§cЭта команда не разрешена на сервере."
+  file-steal:
+    kick: "§cОбнаружена попытка доступа к файлам сервера."
+    warn: "§cПопытка доступа к файлам сервера зафиксирована."
+  db-steal:
+    kick: "§cОбнаружена попытка доступа к базе данных сервера."
+    warn: "§cПопытка доступа к базе данных сервера зафиксирована."
+  crash:
+    kick: "§cВаш клиент отправляет недопустимые пакеты.\n§7Проверьте версию и модификации."
+    warn: "§cВаш клиент отправляет подозрительные пакеты!"
+  hacked-client:
+    kick: "§cОбнаружен хакнутый клиент!\n§7На этом сервере запрещены модификации клиента."
+    warn: "§cОбнаружен хакнутый клиент! Пожалуйста, отключите его."
+  exploit:
+    kick: "§cОбнаружен эксплойт! (§f%module%§c)\n§7Ваше действие заблокировано."
+    warn: "§cОбнаружена подозрительная активность! (§f%module%§c)"
+  captcha:
+    prompt: "§6Напишите число §e%number% §6в чат для подтверждения"
+    success: "§a✓ Капча пройдена! Добро пожаловать."
+    kick: "§cВы не прошли капчу! Перезайдите и напишите число."
+  behaviour:
+    kick: "§cПодозрительное поведение! Перезайдите на сервер."
+  siege:
+    kick: "§cРежим осады: сервер временно ограничивает подключения."
+
+punish:
+  warn-message: "§eПредупреждение! Ваше действие зафиксировано (§f%module%§e). Повторные нарушения приведут к кику."
+  kick-reason: "§cВы были кикнуты за повторные нарушения (§f%module%§c)."
+  tempban-reason: "§cВы временно забанены за многократные нарушения (§f%module%§c)."
+
+gui:
+  title: "&#555555⛨ &#FF4444AntiDumper &#777777» &#AAAAAAПанель"
+  on: "§a§l● ВКЛ"
+  off: "§c§l○ ВЫКЛ"
+  click: "§8Нажмите для переключения"
+  lang-ru: "§fРусский"
+  lang-en: "§fEnglish"
+  lang-on: "§a✓ Активен"
+  lang-off: "§8Нажмите чтобы выбрать"
+  lang-changed-ru: "§8[§cAntiDumper§8] §aЯзык изменён на Русский"
+  lang-changed-en: "§8[§cAntiDumper§8] §aЯзык изменён на English"
+  modules:
+    wdl:
+      name: "§6AntiWorldDownloader"
+      lore:
+        - "§7Защита от модов скачки миров"
+        - "§7WDL, Litematica, Xaero, JourneyMap"
+    stealer:
+      name: "§6AntiPluginStealer"
+      lore:
+        - "§7Защита от воровства плагинов"
+        - "§7PluginGrabber, Stealer"
+    cmdump:
+      name: "§6AntiCommandDump"
+      lore:
+        - "§7Блокировка дамп-команд"
+        - "§7/plugins, /dump, /ping, /version"
+    filesteal:
+      name: "§6AntiFileSteal"
+      lore:
+        - "§7Защита файлов и БД"
+        - "§7Конфиги, JAR, SQLite, .yml"
+    crash:
+      name: "§6AntiCrash"
+      lore:
+        - "§7Защита от краш-ботов"
+        - "§7Пакеты, //calc, //eval"
+    connlimit:
+      name: "§6ConnectionLimiter"
+      lore:
+        - "§7Лимит подключений с IP"
+        - "§7Макс: %limit% conn/IP"
+    cmdwhitelist:
+      name: "§6CommandWhitelist"
+      lore:
+        - "§7Белый список команд"
+        - "§7Режим: %mode%"
+    hackedclient:
+      name: "§6AntiHackedClient"
+      lore:
+        - "§7Защита от хакнутых клиентов"
+        - "§7LPX, Wurst, Future, Forge/FML"
+    packetlimiter:
+      name: "§6PacketLimiter"
+      lore:
+        - "§7Лимит пакетов в секунду"
+        - "§7Анти PacketSpam / FastMath"
+    bookban:
+      name: "§6AntiBookBan"
+      lore:
+        - "§7Защита от книжных крашей"
+        - "§7NBT-книги / лимит страниц"
+    chunkban:
+      name: "§6AntiChunkBan"
+      lore:
+        - "§7Защита от координатных крашей"
+        - "§7Лимит запросов чанков"
+    lagmachine:
+      name: "§6AntiLagMachine"
+      lore:
+        - "§7Защита от лаг-машин"
+        - "§7Энтити / эндер-дракон / вода"
+    phase:
+      name: "§6AntiPhase"
+      lore:
+        - "§7Защита от прохода сквозь стены"
+        - "§7Phase / NoClip детект"
+    blink:
+      name: "§6AntiBlink"
+      lore:
+        - "§7Защита от Blink"
+        - "§7Рассинхрон пакетов"
+    timer:
+      name: "§6AntiTimer"
+      lore:
+        - "§7Защита от Timer"
+        - "§7Ускорение игры"
+    nofall:
+      name: "§6AntiNoFall"
+      lore:
+        - "§7Защита от NoFall"
+        - "§7Отмена урона от падения"
+    boatfly:
+      name: "§6AntiBoatFly"
+      lore:
+        - "§7Защита от BoatFly"
+        - "§7Полёт на лодке"
+    elytrafly:
+      name: "§6AntiElytraFly"
+      lore:
+        - "§7Защита от ElytraFly"
+        - "§7Аномальная скорость элитры"
+    autopearl:
+      name: "§6AntiAutoPearl"
+      lore:
+        - "§7Защита от AutoPearl"
+        - "§7Автоматический жемчуг"
+    inventorymove:
+      name: "§6AntiInventoryMove"
+      lore:
+        - "§7Защита от InventoryMove"
+        - "§7Движение с открытым инвентарём"
+    disabler:
+      name: "§6AntiDisabler"
+      lore:
+        - "§7Защита от Disabler"
+        - "§7Попытки отключить античит"
+    tower:
+      name: "§6AntiTower"
+      lore:
+        - "§7Защита от Tower"
+        - "§7Мгновенное возвышение"
+    scaffold:
+      name: "§6AntiScaffold"
+      lore:
+        - "§7Защита от Scaffold"
+        - "§7Аномальная постановка блоков"
+    nbt:
+      name: "§6AntiNBT"
+      lore:
+        - "§7Защита от NBT-эксплойтов"
+        - "§7Краш через NBT предметы"
+    commandexploit:
+      name: "§6AntiCommandExploit"
+      lore:
+        - "§7Блокировка эксплойт-команд"
+        - "§7/execute /fill /data"
+    captcha:
+      name: "§6BotCAPTCHA"
+      lore:
+        - "§7Капча при входе на сервер"
+        - "§7Защита от ботов"
+    behaviour:
+      name: "§6BehaviourCheck"
+      lore:
+        - "§7Проверка поведения игрока"
+        - "§7Анализ скорости действий"
+    siege:
+      name: "§6SiegeMode"
+      lore:
+        - "§7Режим осады при атаке"
+        - "§7Порог: %threshold% conn/мин"
+    uuidwhitelist:
+      name: "§6UUIDWhitelist"
+      lore:
+        - "§7Белый список UUID"
+        - "§7Только разрешённые игроки"
+  geoip:
+    name: "§6GeoIP"
+    lore:
+      - "§7Геолокация игроков"
+  info:
+    name: "&#FFAA00Информация"
+    lore:
+      - "§7Статус: §aРаботает"
+      - "§7Язык: §f%lang%"
+      - "§7Автор: &#55CCFFS1sTeam"
+      - "§7Нарушений: §f%violations%"
+  stats:
+    name: "§eСтатистика"
+    lore:
+      - "§7Нарушений всего: §f%violations%"
+      - "§7Модулей активно: §f%modules%"
+      - "§7Версия: §f%version%"
+      - "§8Нажмите для просмотра"
+  check:
+    name: "§eПроверка игрока"
+    lore:
+      - "§7/ad check <ник>"
+      - "§8Нажмите чтобы ввести ник"
+  check-hint: "§8[§cAntiDumper§8] §7Используйте: §c/ad check <ник>"
+  reload:
+    name: "§6Перезагрузить"
+    lore:
+      - "§7Перезагрузить конфигурацию"
+      - "§8Нажмите для применения изменений"
+  close:
+    name: "§cЗакрыть"
+  prev: "§e← Назад"
+  next: "§eВперёд →"
